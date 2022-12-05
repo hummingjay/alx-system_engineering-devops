@@ -1,2 +1,2 @@
 #!/bin/bash
-head -n 11 my_file
+head -n 10 my_file
