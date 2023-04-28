@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#while reads each line of /etc/passwd assigns the fields
+# seperated by colons to variables, the IFS option sets the
+# field seperator to a colon so each variable assinged well
+
+while IFS=: read -r username password uid gid gecos home shell
+do
+	echo "$username:$uid:$home"
+done < /etc/passwd
+
