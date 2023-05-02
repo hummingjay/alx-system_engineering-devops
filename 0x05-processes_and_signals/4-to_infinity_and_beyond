@@ -4,6 +4,6 @@
 j=1
 while [ $j -eq 1 ]
 do
-	echo "TO infinity and beyond"
+	echo "To infinity and beyond"
 	sleep 2
 done
