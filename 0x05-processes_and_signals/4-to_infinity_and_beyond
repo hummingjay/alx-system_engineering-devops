@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Bash scrip that prints to infinity and beyond no stop
+
+j=1
+while [ $j -eq 1 ]
+do
+	echo "TO infinity and beyond"
+	sleep 2
+done
