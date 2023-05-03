@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# SCript to stop 4
+
+pkill -15 "bash ./7-highlander" -f
