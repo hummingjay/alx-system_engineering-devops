@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Bash script that configures an Ubuntu server
 
 # Set localhost to resolve to 127.0.0.2
 echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Bash script that displays all active ipv4 IPS on macine
 
 # Get the list of active network interfaces
 interfaces=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2}')
