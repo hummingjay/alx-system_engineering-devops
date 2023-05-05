@@ -7,8 +7,8 @@ interfaces=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2}')
 # Loop through each interface and get its IPv4 address
 for interface in $interfaces
 do
-    ip=$(ip addr show $interface | awk '$1 == "inet" {gsub(/\/.*$/, "", $2); print $2}')
-    if [[ ! -z $ip ]]; then
+    ip=$(ip addr show "$interface" | awk '$1 == "inet" {gsub(/\/.*$/, "", $2); print $2}')
+    if [[ -n $ip ]]; then
         echo "$interface: $ip"
     fi
 done
