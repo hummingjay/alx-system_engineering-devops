@@ -2,7 +2,9 @@
 # Bash script that configures an Ubuntu server
 
 # Set localhost to resolve to 127.0.0.2
-echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+cp /etc/hosts ~/hosts.new
+sed -i s/^127.*$// ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
 
 # Set facebook.com to resolve to 8.8.8.8
 echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
