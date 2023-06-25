@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# connects toserver 
 ssh ssh -i ~/.ssh/school -o PreferredAuthentications=publickey ubuntu@jay
