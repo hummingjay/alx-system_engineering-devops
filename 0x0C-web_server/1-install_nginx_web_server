@@ -9,5 +9,5 @@ sudo ufw --force enable
 sudo ufw status
 systemctl status nginx
 # create an index.html file with "HelloWorld!" content and prevent output in terminal
-echo "Hello World!" | sudo tee/var/www/html/index.html>/dev/null
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 sudo service nginx restart
