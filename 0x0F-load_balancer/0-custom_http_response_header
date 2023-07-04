@@ -1,18 +1,50 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2154
+# configure web-02 to be identical to web-01
+# The name of the custom HTTP header must be X-Served-By
+# The value of the custom HTTP header must be the hostname of the server Nginx is running on
 
 # Update package lists
-sudo apt-get update
+sudo apt-get -y update
 
 # Install Nginx
-sudo apt-get install nginx -y
+sudo apt-get -y install nginx
 
-# Define the custom header configuration string
-custom_header="add_header X-Served-By \$hostname;"
+# Allow HTTP traffic through the firewall
+sudo ufw allow 'Nginx HTTP'
 
-# Add the custom header configuration to Nginx sites-available/default file
-sudo sed -i "s/http {/$custom_header\n\nhttp {/" /etc/nginx/sites-available/default
+# Create directories for web content and error pages
+sudo mkdir -p /var/www/html /var/www/error
 
-# Restart Nginx service
+# Set permissions for the web directories
+sudo chmod -R 755 /var/www
+
+# Create an index.html file with "Hello World!" content
+echo 'Hello World!' > /var/www/html/index.html
+
+# Create a custom 404.html file
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+# Define the Nginx server configuration
+server_config=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	add_header X-Served-By \$hostname;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://youtube.com permanent;
+	}
+	error_page 404 /404.html;
+	location = /404.html {
+		internal;
+	}
+}"
+# Write the server configuration to the Nginx default site configuration file
+echo "$server_config" > /etc/nginx/sites-enabled/default
+# Restart the Nginx service to apply the changes
 sudo service nginx restart
-
