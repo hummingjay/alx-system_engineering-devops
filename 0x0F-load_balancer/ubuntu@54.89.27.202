@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# configuring nginx server for custom  header of HTTp response
+
+# configure NGINX
+sudo apt update
+sudo apt-get install -y nginx
+
+#get hostname
+hostname=$(hostname)
+
+# configure Nginx 
+sudo sed -i 's/# server_tokens off;/server_tokens off;\n\tadd_header X-served-By $hostname;/g' /etc/nginx/nginx.conf
+
+# restart Nginx
+sudo systemctl restart nginx
