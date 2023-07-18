@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# accepts arg to run as other user
 if [[ $# -eq 0 ]];
 then
 	echo "Please Provide a username as argument."
