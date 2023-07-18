@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # accepts arg to run as other user
-#if [[ $# -eq 0 ]];
-#then
-#	echo "Please Provide a username as argument."
-#	exit 1
-#fi
+if [[ $# -eq 0 ]];
+then
+	echo "Please Provide a username as argument."
+	exit 1
+fi
 
 su - "$1" -c "whoami"
