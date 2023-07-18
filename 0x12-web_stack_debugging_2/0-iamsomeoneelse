@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if [[ $# -eq 0 ]];
+then
+	echo "Please Provide a username as argument."
+	exit 1
+fi
+
+su - "$1" -c "whoami"
