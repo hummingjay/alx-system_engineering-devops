@@ -6,4 +6,5 @@ then
 	exit 1
 fi
 
-su - "$1" -c "whoami"
+#su - "$1" -c "whoami"
+echo "$1"
