@@ -7,5 +7,5 @@ then
 fi
 
 #su - "$1" -c "whoami"
-#echo "$1"
-sudo -u "$1" whoami
+echo "$1"
+#sudo -u "$1" whoami
