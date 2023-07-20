@@ -1,0 +1,21 @@
+#!/usrbin/env bash
+# run as usr nginx
+if [[ $EUID -ne 0 ]];
+then
+	echo "Please run script as root"
+	exit 1
+fi
+
+#install nginx if not present
+if ! command -v nginx &>/dev/null;
+then
+	apt-get update
+	apt-get install -y nginx
+fi
+
+#ensure nginx running as nginx user
+chown -R nginx:nginx /var/lib/nginx
+chown -R nginx:nginx /var/log/nginx
+
+#backup
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
