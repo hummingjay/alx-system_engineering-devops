@@ -13,10 +13,10 @@ def number_of_subscribers(subreddit):
         return 0
 
     # set up a customer header to avoid too many requests
-    headers = {'User-Agent': '0-subs (Ubuntu; Python:3'}
+    headers = {'User-Agent': '0-subs (Ubuntu; Python:3.8)'}
 
     # set url then make GET request to the subreddit
-    url = f'https://www.redditcom/r/{subreddit}/about.json'
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
     # structure: response = requests.get(url, params=None,
     # headers=None, cookies=None, timeout=None)
     response = requests.get(url, headers=headers, allow_redirects=False)
