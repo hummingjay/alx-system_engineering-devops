@@ -1,4 +1,4 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
 """
 Function that queries the REDDIT API
 returns number of Subscribers for given subreddit
